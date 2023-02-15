@@ -7,9 +7,24 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Backbone API ZipCodes
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+El proyecto es una API que extrae la información del código postal proporcionado en la URL.  
+La URL es la siguiente:  
+```
+https://backbone.miguelcoria.com/api/zip-codes/CODIGO_POSTAL
+```
+
+- CODIGO_POSTAL: Es el código postal del que se desea obtener la información.  
+
+### Pasos para instalar el proyecto
+1. Clonar el repositorio a la carpeta local: [Github Project Link](https://github.com/mcoria08/backbone.git)
+2. Ejecutar el comando: `composer install`
+3. Copiar el archivo `.env.example` al archivo `.env`
+4. Correr las migraciones: `php artisan migrate`
+5. ejecutar el comando `php artisan upload:zipcodes`
+### Descripción del Proyecto  
+
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
