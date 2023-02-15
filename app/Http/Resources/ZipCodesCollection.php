@@ -43,7 +43,7 @@ class ZipCodesCollection extends ResourceCollection
 
         $jsonObj["municipality"] = [
             "key" => intval($zipcode->c_mnpio),
-            "name" => $zipcode->d_mnpio
+            "name" => $zipcode->D_mnpio
         ];
 
         return $jsonObj;
