@@ -23,18 +23,18 @@ class ZipCodesCollection extends ResourceCollection
         $jsonObj = [];
 
         $jsonObj["zip_code"] = $zipcode->d_codigo;
-        $jsonObj["locality"] = $zipcode->d_ciudad;
+        $jsonObj["locality"] = strtoupper($zipcode->d_ciudad);
         $jsonObj["federal_entity"] = [
             "key" => intval($zipcode->c_estado),
-            "name" => $zipcode->d_estado,
+            "name" => strtoupper($zipcode->d_estado),
             "code" => $zipcode->c_cp,
         ];
 
         $jsonObj["settlements"] = $this->collection->transform(function ($item) use ($jsonObj) {
             return [
                 "key" => intval($item->id_asenta_cpcons),
-                "name" => $item->d_asenta,
-                "zone_type" => $item->d_zona,
+                "name" => strtoupper($item->d_asenta),
+                "zone_type" => strtoupper($item->d_zona),
                 "settlement_type" => [
                     "name" => $item->d_tipo_asenta
                 ]
@@ -43,7 +43,7 @@ class ZipCodesCollection extends ResourceCollection
 
         $jsonObj["municipality"] = [
             "key" => intval($zipcode->c_mnpio),
-            "name" => $zipcode->D_mnpio
+            "name" => strtoupper($zipcode->D_mnpio)
         ];
 
         return $jsonObj;
