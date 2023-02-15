@@ -19,13 +19,16 @@ https://backbone.miguelcoria.com/api/zip-codes/CODIGO_POSTAL
   
   
 ### Pasos para instalar el proyecto
+
 1. Clonar el repositorio a la carpeta local: [Github Project Link](https://github.com/mcoria08/backbone.git)
 2. Ejecutar el comando: `composer install`  
 3. Copiar el archivo `.env.example` al archivo `.env` y actualizar el nombre de la base de datos.  
-4. Correr las migraciones: `php artisan migrate`  
-5. Ejecutar el comando `php artisan upload:zipcodes` para llenar la tabla de `zip_codes` con la información que se encuentra en el archivo `database/data/zipcode-mexico.sql`  
-  
+4. Ejecutar el siguiente comando `php artisan cache:table` para la gestión de cache en la base de datos.
+5. Correr las migraciones: `php artisan migrate`  
+
+6. Ejecutar el comando `php artisan upload:zipcodes` para llenar la tabla de `zip_codes` con la información que se encuentra en el archivo `database/data/zipcode-mexico.sql`  
+7. Generar la llave del proyecto `php artisan key:generate`  
+8. Correr el proyecto `php artisan serve`
   
 ### Descripción del Proyecto  
-  
-  sdfsdf
+
