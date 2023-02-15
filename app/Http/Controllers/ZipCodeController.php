@@ -21,12 +21,19 @@ class ZipCodeController extends Controller
 
         //Creating the JSON object
         try{
-            $zipcodes = Zipcode::query()->where('d_codigo', $zipCode)->get();
-            $data = cache()->remember('zipcodes.{$zipCode}', now()->addDays(1), function() use ($zipcodes){
-                return new ZipCodesCollection($zipcodes);
-            });
+            $zipcodes = Zipcode::query()->where('d_codigo', ltrim($zipCode, 0))->get();
+            if (!$zipcodes){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'No data information for that request.'
+                ], 404);
+            }
 
-            return $data;
+            //$data = cache()->remember('zipcodes.{$zipCode}', now()->addDays(1), function() use ($zipcodes){
+                return new ZipCodesCollection($zipcodes);
+            //});
+
+            //return $data;
         }catch(\ErrorException $error){
             return response()->json([
                 'status' => false,
