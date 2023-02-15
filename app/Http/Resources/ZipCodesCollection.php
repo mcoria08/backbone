@@ -22,7 +22,7 @@ class ZipCodesCollection extends ResourceCollection
 
         $jsonObj = [];
 
-        $jsonObj["zip_code"] = $zipcode->d_codigo;
+        $jsonObj["zip_code"] = sprintf('%05d',$zipcode->d_codigo);
         $jsonObj["locality"] = $zipcode->d_ciudad;
         $jsonObj["federal_entity"] = [
             "key" => intval($zipcode->c_estado),
