@@ -29,11 +29,11 @@ class ZipCodeController extends Controller
                 ], 404);
             }
 
-            $data = cache()->remember('zipcodes.{$zipCode}', now()->addDays(1), function() use ($zipcodes){
+            //$data = cache()->remember('zipcodes.{$zipCode}', now()->addDays(1), function() use ($zipcodes){
                 return new ZipCodesCollection($zipcodes);
-            });
+            //});
 
-            return $data;
+            //return $data;
         }catch(\ErrorException $error){
             return response()->json([
                 'status' => false,
