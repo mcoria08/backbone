@@ -53,7 +53,7 @@ class UploadZipCodes extends Command
     }
 
     private function getDataFromFile(){
-        return Str::of(File::get('public/zipcode-mexico.sql'))
+        return Str::of(File::get('database/data/zipcode-mexico.sql'))
             ->explode(PHP_EOL)
             ->values();
     }
