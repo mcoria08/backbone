@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ZipCode;
 use App\Http\Resources\ZipCodesCollection;
+use Illuminate\Support\Facades\Cache;
+
 
 class ZipCodeController extends Controller
 {
@@ -20,7 +22,11 @@ class ZipCodeController extends Controller
         //Creating the JSON object
         try{
             $zipcodes = Zipcode::query()->where('d_codigo', $zipCode)->get();
-            return new ZipCodesCollection($zipcodes);
+            $data = cache()->remember('zipcodes.{$zipCode}', now()->addDays(1), function() use ($zipcodes){
+                return new ZipCodesCollection($zipcodes);
+            });
+
+            return $data;
         }catch(\ErrorException $error){
             return response()->json([
                 'status' => false,
